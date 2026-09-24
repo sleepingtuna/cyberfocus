@@ -1,6 +1,7 @@
 import { useState } from "react";
 import LoginScreen from "./components/LoginScreen";
 import PomodoroTimer from "./components/PomodoroTimer";
+import BackgroundVideo from "./components/BackgroundVideo";
 import "./App.css";
 
 function App() {
@@ -38,21 +39,29 @@ function App() {
 
   return (
     <main className="dashboard">
-      <header className="dashboard-header">
-        <div>
-          <p className="system-label">
-            CYBERFOCUS // PRODUCTIVITY SYSTEM
+
+      <BackgroundVideo />
+
+      <div className="dashboard-content">
+
+        <header className="dashboard-header">
+          <div>
+            <p className="system-label">
+              CYBERFOCUS // PRODUCTIVITY VIA POMODORO
+            </p>
+
+            <h1>CYBERFOCUS</h1>
+          </div>
+
+          <p className="online-status">
+            ● SYSTEM ONLINE
           </p>
+        </header>
 
-          <h1>CYBERFOCUS</h1>
-        </div>
+        <PomodoroTimer />
 
-        <p className="online-status">
-          ● SYSTEM ONLINE
-        </p>
-      </header>
+      </div>
 
-      <PomodoroTimer />
     </main>
   );
 }

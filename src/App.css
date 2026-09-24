@@ -71,6 +71,32 @@ input {
   font-size: 0.8rem;
 }
 
+.access-granted-screen {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      rgba(0, 255, 255, 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 255, 255, 0.03) 1px,
+      transparent 1px
+    ),
+    #050509;
+
+  background-size: 40px 40px;
+}
+
 .login-form {
   display: flex;
   flex-direction: column;
@@ -139,22 +165,19 @@ input {
 }
 
 .dashboard {
+  position: relative;
+
   min-height: 100vh;
   padding: 40px;
 
-  background:
-    linear-gradient(
-      rgba(0, 255, 255, 0.03) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(0, 255, 255, 0.03) 1px,
-      transparent 1px
-    ),
-    #050509;
+  overflow: hidden;
 
-  background-size: 40px 40px;
+  background: #050509;
+}
+
+.dashboard-content {
+  position: relative;
+  z-index: 3;
 }
 
 .dashboard-header {
@@ -243,4 +266,184 @@ input {
 .timer-controls button:hover {
   background: #7df9ff;
   color: #050509;
+}
+
+.background-system {
+  position: fixed;
+  inset: 0;
+
+  overflow: hidden;
+
+  background: #050509;
+
+  z-index: 0;
+}
+
+.background-video {
+  position: absolute;
+
+  top: -3%;
+  left: -3%;
+
+  width: 106%;
+  height: 106%;
+
+  object-fit: cover;
+
+  opacity: 0;
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.12s ease-out;
+
+  will-change:
+    opacity,
+    transform;
+}
+
+.current-video {
+  opacity: 0.22;
+}
+
+.current-video.fade-out {
+  opacity: 0;
+}
+
+.next-video {
+  opacity: 0;
+}
+
+.next-video.fade-in {
+  opacity: 0.22;
+}
+
+.background-dim {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(2, 4, 10, 0.38);
+
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+.background-grid {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      rgba(0, 255, 255, 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 255, 255, 0.03) 1px,
+      transparent 1px
+    );
+
+  background-size: 40px 40px;
+
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+.background-grid {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      rgba(0, 255, 255, 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 255, 255, 0.03) 1px,
+      transparent 1px
+    );
+
+  background-size: 40px 40px;
+
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+.background-switcher {
+  position: fixed;
+
+  bottom: 25px;
+  right: 25px;
+
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  padding: 10px 15px;
+
+  border: 1px solid rgba(125, 249, 255, 0.5);
+
+  background: rgba(5, 5, 15, 0.65);
+
+  color: #7df9ff;
+
+  font-family: inherit;
+
+  font-size: 0.7rem;
+
+  letter-spacing: 0.1rem;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(6px);
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.background-switcher span {
+  color: #ff4fd8;
+
+  font-size: 0.6rem;
+}
+
+.background-switcher:hover {
+  background: rgba(125, 249, 255, 0.12);
+
+  border-color: #7df9ff;
+}
+
+.background-switcher:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.timer-panel {
+  transition:
+    border-color 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+.timer-panel.focus {
+  border-color: #27474a;
+}
+
+.timer-panel.shortBreak {
+  border-color: rgba(112, 255, 157, 0.5);
+
+  box-shadow:
+    0 0 30px rgba(112, 255, 157, 0.08);
+}
+
+.timer-panel.longBreak {
+  border-color: rgba(255, 79, 216, 0.5);
+
+  box-shadow:
+    0 0 30px rgba(255, 79, 216, 0.1);
 }
